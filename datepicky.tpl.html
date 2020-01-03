@@ -1,0 +1,29 @@
+<div>
+    <input
+        class="global__txtbox txt__bk"
+        ng-class="{ 'input-error': (formDate.$invalid && (formDate.$touched || submitted) && noErrMsg!='true') || (checkhasErr(checkErr) && noErrMsg!='true') }"
+        type="text" id="{[{ txtboxId }]}"
+        ng-model="ngModel"
+        name="{[{ name }]}"
+        placeholder="{[{ option.placeholder }]}"
+        ng-required="option.required && noErrMsg!='true'"
+        redatepicker="config"
+        ng-change="validateData(ngModel)"
+        ng-blur="blurr()"
+        ng-keypress="keypress();"
+        ng-paste="$event.preventDefault()"
+        ng-style='myStyle'
+        ng-disabled="ngDisabled"
+        tabindex="{[{ tabIndex }]}"
+    />
+    <span ng-if="checkHasErr() && noErrMsg!='true'" class="has-error">
+        <small class="has-error txt__danger m-b-0" ng-if="formvalidity()=='yearValid'">Invalid Year</small>
+        <small class="has-error txt__danger m-b-0" ng-if="formvalidity()=='monthValid'">Invalid Month</small>
+        <small class="has-error txt__danger m-b-0" ng-if="formvalidity()=='monthRequired'">Month is required</small>
+        <small class="has-error txt__danger m-b-0" ng-if="formvalidity()=='dateValid'">Invalid Date</small>
+        <small class="has-error txt__danger m-b-0" ng-if="formvalidity()=='dayValid'">Invalid Date</small>
+
+        <small class="has-error txt__danger m-b-0" ng-if="formvalidity()=='minDate'">Minimum Date is {[{ config.min }]}</small>
+        <small class="has-error txt__danger m-b-0" ng-if="formvalidity()=='maxDate'">Maximum Date is {[{ config.max }]}</small>
+    </span>
+</div>
